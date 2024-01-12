@@ -3,9 +3,18 @@ import sendEmail as se
 receiver_email = st.text_input("Enter your email :")
 button=st.button("Press to receive help information", key="Submit")
 
-print("Waiting for submit")
+sender_email ="lgk09021984@gmail.com"
+password="kywbcshhwemnnjix"
 
-if button and len(receiver)!=0:
-    print("Calling Send mail")
-    se.send_mail("lgk09021984@gmail.com","kywbcshhwemnnjix", receiver_email, "Help text sent")
-    st.write("Help emailed to the requested email id")
+Help_Text = f"""\
+Subject: Help Information!
+From: {sender_email}
+Help text line1
+Help text line2
+Help text line3
+"""
+txt_update=st.text("")
+if button and len(receiver_email)!=0:
+    txt_update.text("Sending the email...")
+    se.send_mail(sender_email,password, receiver_email, Help_Text)
+    txt_update.text("Help emailed to the requested email id")
